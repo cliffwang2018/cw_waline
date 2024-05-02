@@ -1,4 +1,4 @@
-name: 'publish @waline/admin'
+name: 'publish @cw_waline/admin'
 
 on:
   push:
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,7 +26,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile && pnpm --filter ./packages/admin run build
 
-      - name: 'publish @waline/admin'
+      - name: 'publish @cw_waline/admin'
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
